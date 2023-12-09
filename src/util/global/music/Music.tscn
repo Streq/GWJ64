@@ -1,0 +1,44 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://src/util/global/music/stream.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/util/global/music/Music.gd" type="Script" id=2]
+[ext_resource path="res://assets/audio/music/intro/xDeviruchi - And The Journey Begins .ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/music/start_screen/Breezys Mega Quest - 1a Title Theme.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/music/level/training/mountain-trials.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/audio/music/overworld/nes_11-soft_then_loud.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/audio/music/level/pradera_magica/Breezy's Mega Quest - 2 Stage 1.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/audio/music/boss_fight/Breezy's Mega Quest - 5 Stage 4.ogg" type="AudioStream" id=8]
+[ext_resource path="res://assets/audio/music/menu/gameboynose2-02.wav" type="AudioStream" id=9]
+
+[node name="Music" type="Node"]
+pause_mode = 2
+script = ExtResource( 2 )
+
+[node name="songs" type="Node" parent="."]
+
+[node name="pradera_magica" parent="songs" instance=ExtResource( 1 )]
+stream = ExtResource( 7 )
+
+[node name="parque_baron" parent="songs" instance=ExtResource( 1 )]
+stream = ExtResource( 6 )
+
+[node name="boss_fight" parent="songs" instance=ExtResource( 1 )]
+stream = ExtResource( 8 )
+
+[node name="gym_sergio" parent="songs" instance=ExtResource( 1 )]
+stream = ExtResource( 3 )
+
+[node name="gym_sergio_training" parent="songs" instance=ExtResource( 1 )]
+stream = ExtResource( 5 )
+
+[node name="intro" parent="songs" instance=ExtResource( 1 )]
+stream = ExtResource( 3 )
+
+[node name="main_screen" parent="songs" instance=ExtResource( 1 )]
+stream = ExtResource( 4 )
+
+[node name="menu" parent="songs" instance=ExtResource( 1 )]
+stream = ExtResource( 9 )
+
+[node name="player" type="AudioStreamPlayer" parent="."]
+bus = "Music"
