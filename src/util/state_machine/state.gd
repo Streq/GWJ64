@@ -71,6 +71,8 @@ func _handle_input(event: InputEvent):
 #UTILS
 
 func goto(state: String):
+	if name == state:
+		return
 	emit_signal("finish", state, null)
 
 func goto_args(state: String, args: Dictionary):

@@ -1,0 +1,135 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/terrain/multiple_segment_collider.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/intro/game_intro.gd" type="Script" id=2]
+[ext_resource path="res://src/light/light.tscn" type="PackedScene" id=3]
+
+[node name="CanvasLayer" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="walls" type="Node2D" parent="."]
+
+[node name="HELIOS" type="StaticBody2D" parent="walls"]
+unique_name_in_owner = true
+
+[node name="H" parent="walls/HELIOS" instance=ExtResource( 1 )]
+points = PoolVector2Array( 128, 280, 128, 136, 136, 216, 184, 208, 192, 272, 192, 160 )
+
+[node name="e" parent="walls/HELIOS" instance=ExtResource( 1 )]
+position = Vector2( 96, 8 )
+points = PoolVector2Array( 160, 184, 184, 184, 216, 184, 200, 152, 160, 144, 144, 176, 152, 216, 184, 248, 208, 232 )
+
+[node name="l" parent="walls/HELIOS" instance=ExtResource( 1 )]
+points = PoolVector2Array( 384, 160, 376, 256, 424, 256 )
+
+[node name="i" parent="walls/HELIOS" instance=ExtResource( 1 )]
+position = Vector2( 104, -8 )
+points = PoolVector2Array( 376, 176, 376, 256 )
+
+[node name="o" parent="walls/HELIOS" instance=ExtResource( 1 )]
+position = Vector2( 176, -8 )
+points = PoolVector2Array( 400, 184, 384, 224, 400, 256, 432, 256, 440, 232, 432, 208, 416, 184, 400, 184 )
+
+[node name="s" parent="walls/HELIOS" instance=ExtResource( 1 )]
+position = Vector2( 304, -8 )
+points = PoolVector2Array( 352, 256, 392, 248, 392, 232, 376, 208, 360, 200, 352, 184, 360, 168, 384, 168, 392, 176 )
+
+[node name="H2" parent="walls/HELIOS" instance=ExtResource( 1 )]
+position = Vector2( 9, 9 )
+points = PoolVector2Array( 128, 280, 128, 136, 136, 216, 184, 208, 192, 272, 192, 160 )
+
+[node name="e2" parent="walls/HELIOS" instance=ExtResource( 1 )]
+position = Vector2( 105, 17 )
+points = PoolVector2Array( 160, 184, 184, 184, 216, 184, 200, 152, 160, 144, 144, 176, 152, 216, 184, 248, 208, 232 )
+
+[node name="l2" parent="walls/HELIOS" instance=ExtResource( 1 )]
+position = Vector2( 9, 9 )
+points = PoolVector2Array( 384, 160, 376, 256, 424, 256 )
+
+[node name="i2" parent="walls/HELIOS" instance=ExtResource( 1 )]
+position = Vector2( 113, 1 )
+points = PoolVector2Array( 376, 176, 376, 256 )
+
+[node name="o2" parent="walls/HELIOS" instance=ExtResource( 1 )]
+position = Vector2( 185, 1 )
+points = PoolVector2Array( 400, 184, 384, 224, 400, 256, 432, 256, 440, 232, 432, 208, 416, 184, 400, 184 )
+
+[node name="s2" parent="walls/HELIOS" instance=ExtResource( 1 )]
+position = Vector2( 313, 1 )
+points = PoolVector2Array( 352, 256, 392, 248, 392, 232, 376, 208, 360, 200, 352, 184, 360, 168, 384, 168, 392, 176 )
+
+[node name="bystreq" type="StaticBody2D" parent="walls"]
+unique_name_in_owner = true
+position = Vector2( 40, 80 )
+
+[node name="b" parent="walls/bystreq" instance=ExtResource( 1 )]
+scale = Vector2( 0.75, 0.75 )
+points = PoolVector2Array( 672, 400, 672, 377.761, 672, 352, 696, 360, 680, 376, 688, 384, 696, 392, 688, 400, 672, 400 )
+
+[node name="y" parent="walls/bystreq" instance=ExtResource( 1 )]
+scale = Vector2( 0.75, 0.75 )
+points = PoolVector2Array( 720, 408, 728, 384, 736, 360, 728, 384, 712, 360 )
+
+[node name="s" parent="walls/bystreq" instance=ExtResource( 1 )]
+scale = Vector2( 0.75, 0.75 )
+points = PoolVector2Array( 792, 408, 808, 408, 824, 400, 816, 376, 792, 376, 784, 360, 784, 352, 800, 344, 816, 344 )
+
+[node name="t" parent="walls/bystreq" instance=ExtResource( 1 )]
+scale = Vector2( 0.75, 0.75 )
+points = PoolVector2Array( 864, 408, 864, 376, 864, 360, 864, 376, 848, 368, 880, 384 )
+
+[node name="r" parent="walls/bystreq" instance=ExtResource( 1 )]
+scale = Vector2( 0.75, 0.75 )
+points = PoolVector2Array( 904, 408, 904, 364.87, 920, 368 )
+
+[node name="e" parent="walls/bystreq" instance=ExtResource( 1 )]
+scale = Vector2( 0.75, 0.75 )
+points = PoolVector2Array( 968, 408, 952, 400, 944, 376, 952, 368, 968, 360, 976, 360, 984, 376, 984, 384, 968, 384, 944, 376 )
+
+[node name="q" parent="walls/bystreq" instance=ExtResource( 1 )]
+position = Vector2( 0, 16 )
+scale = Vector2( 0.75, 0.75 )
+points = PoolVector2Array( 1048, 408, 1048, 369.951, 1048, 344, 1024, 344, 1016, 368, 1048, 376 )
+
+[node name="b2" parent="walls/bystreq" instance=ExtResource( 1 )]
+position = Vector2( 3.75, 2.75 )
+scale = Vector2( 0.75, 0.75 )
+points = PoolVector2Array( 672, 400, 672, 377.761, 672, 352, 696, 360, 680, 376, 688, 384, 696, 392, 688, 400, 672, 400 )
+
+[node name="y2" parent="walls/bystreq" instance=ExtResource( 1 )]
+position = Vector2( 3.75, 2.75 )
+scale = Vector2( 0.75, 0.75 )
+points = PoolVector2Array( 720, 408, 728, 384, 736, 360, 728, 384, 712, 360 )
+
+[node name="s2" parent="walls/bystreq" instance=ExtResource( 1 )]
+position = Vector2( 3.75, 2.75 )
+scale = Vector2( 0.75, 0.75 )
+points = PoolVector2Array( 792, 408, 808, 408, 824, 400, 816, 376, 792, 376, 784, 360, 784, 352, 800, 344, 816, 344 )
+
+[node name="t2" parent="walls/bystreq" instance=ExtResource( 1 )]
+position = Vector2( 3.75, 2.75 )
+scale = Vector2( 0.75, 0.75 )
+points = PoolVector2Array( 864, 408, 864, 376, 864, 360, 864, 376, 848, 368, 880, 384 )
+
+[node name="r2" parent="walls/bystreq" instance=ExtResource( 1 )]
+position = Vector2( 3.75, 2.75 )
+scale = Vector2( 0.75, 0.75 )
+points = PoolVector2Array( 904, 408, 904, 364.87, 920, 368 )
+
+[node name="e2" parent="walls/bystreq" instance=ExtResource( 1 )]
+position = Vector2( 3.75, 2.75 )
+scale = Vector2( 0.75, 0.75 )
+points = PoolVector2Array( 968, 408, 952, 400, 944, 376, 952, 368, 968, 360, 976, 360, 984, 376, 984, 384, 968, 384, 944, 376 )
+
+[node name="q2" parent="walls/bystreq" instance=ExtResource( 1 )]
+position = Vector2( 3.75, 18.75 )
+scale = Vector2( 0.75, 0.75 )
+points = PoolVector2Array( 1048, 408, 1048, 369.951, 1048, 344, 1024, 344, 1016, 368, 1048, 376 )
+
+[node name="light9" parent="." instance=ExtResource( 3 )]
+position = Vector2( 464, 48 )
+rays = 256
+ray_length = 1024.0
+MAX_WIDTH = 360
+MAX_LENGTH = 1024
+MIN_LENGTH = 1024

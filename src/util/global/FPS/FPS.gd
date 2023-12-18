@@ -9,10 +9,10 @@ const SLOW_FPS := 15.0
 
 func set_value(val):
 	value = val
-	if val >= 0.0:
-		Engine.target_fps = val
-		Engine.time_scale = val / BASE_FPS
-		Engine.iterations_per_second = val
+	if value >= 0.0:
+		Engine.target_fps = value
+		Engine.time_scale = value / BASE_FPS
+		Engine.iterations_per_second = value
 		#change audio_speed
 		AudioServer.global_rate_scale = BASE_FPS / float(value)
 		match value:
@@ -31,11 +31,11 @@ func set_value(val):
 
 
 func _physics_process(delta):
-	set_value(BASE_FPS)
+#	set_value(BASE_FPS)
 	if !OS.is_debug_build():
 		return
-	if Input.is_action_pressed("speed_up"):
-		set_value(FAST_FPS)
-
-	if Input.is_action_pressed("speed_down"):
-		set_value(SLOW_FPS)
+#	if Input.is_action_pressed("speed_up"):
+#		set_value(FAST_FPS)
+#
+#	if Input.is_action_pressed("speed_down"):
+#		set_value(SLOW_FPS)

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/analog_stick_head.png-f167685ef81a73da4f5fb32294d9443a.stex"
+path="res://.import/dark_tile.png-81f396f1dbcb7f454d0a3ca4daaa681c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/texture/analog_stick_head.png"
-dest_files=[ "res://.import/analog_stick_head.png-f167685ef81a73da4f5fb32294d9443a.stex" ]
+source_file="res://assets/texture/dark_tile.png"
+dest_files=[ "res://.import/dark_tile.png-81f396f1dbcb7f454d0a3ca4daaa681c.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=1
+flags/repeat=0
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/light.gd" type="Script" id=1]
+[ext_resource path="res://src/light/ray.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Curve" id=20]
+_data = [ Vector2( 0, 0 ), 0.0, 0.450101, 0, 0, Vector2( 0.996409, 0.972727 ), 2.21534, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=21]
+min_value = 0.1
+_data = [ Vector2( 0, 0.1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[node name="light" type="Node2D"]
+script = ExtResource( 1 )
+RAY = ExtResource( 2 )
+rays = 64
+MAX_WIDTH = 120
+MAX_LENGTH = 400
+MAX_RAYS = 512
+width_to_length_curve = SubResource( 20 )
+length_to_alpha_curve = SubResource( 21 )
+
+[connection signal="process_ray" from="." to="." method="process_ray"]

@@ -31,3 +31,14 @@ static func log_lerp(from, to, weight):
 	var exp_to = log(to)
 	var v = exp(lerp(exp_from, exp_to, weight))
 	return v
+
+static func lerp_to_offset(from, to, offset, delta):
+	if from > to:
+		from = lerp(from, to - offset, delta)
+		from = max(from, to)
+		
+	elif from < to:
+		from = lerp(from, to + offset, delta)
+		from = min(from, to)
+	
+	return from
