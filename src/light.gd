@@ -19,7 +19,6 @@ export var MAX_RAYS = 128
 export var MIN_RAYS = 0
 
 
-
 var ray_instances = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,7 +27,7 @@ func _ready():
 func add_new_ray():
 	var ray_instance : RayCast2D = RAY.instance()
 	call_deferred("add_child",ray_instance)
-	ray_instances.append(ray_instance)	
+	ray_instances.append(ray_instance)
 export var width_to_length_curve : Curve
 export var length_to_alpha_curve : Curve
 
@@ -46,12 +45,12 @@ func adjust():
 	var offset_from_blindspot = -vision_arc_rads/2
 	var half_rays = self.rays/2
 	var iterator = 0
-	for side in [-1.0,1.0]:
+	for side in [-1.0, 1.0]:
 		var offset = 1 if side == -1.0 else 0 
 		for i in range(offset, half_rays+offset):
 			var ray_instance = ray_instances[iterator]
 			emit_signal("process_ray", ray_instance, side, i, half_rays, vision_arc_rads)
-			iterator+=1
+			iterator += 1
 
 func process_ray(ray_instance, side, index, rays_amount_halved, vision_arc_rads):
 	ray_instance.rotation = index * side * vision_arc_rads / rays_amount_halved

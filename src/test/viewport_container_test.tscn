@@ -1,0 +1,95 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://src/test/viewport_container_test.gd" type="Script" id=1]
+[ext_resource path="res://assets/texture/icon.png" type="Texture" id=2]
+[ext_resource path="res://src/test/viewport_thing/light_renderer.gd" type="Script" id=3]
+[ext_resource path="res://assets/shader/mask_shader.gdshader" type="Shader" id=4]
+[ext_resource path="res://src/pivot.gd" type="Script" id=5]
+[ext_resource path="res://src/pov_player.gd" type="Script" id=6]
+[ext_resource path="res://src/player/radar.gd" type="Script" id=7]
+[ext_resource path="res://src/Camera2D.gd" type="Script" id=8]
+[ext_resource path="res://src/light/flashlight.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/texture/some_floor_tile.png" type="Texture" id=10]
+
+[sub_resource type="Curve" id=5]
+max_value = 5.0
+_data = [ Vector2( 0.499316, 0 ), 0.0, 5.35631, 0, 1, Vector2( 1, 2.68182 ), 5.35631, 0.0, 1, 0 ]
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 1.0
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 270.0
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 4 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+unique_name_in_owner = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 960.0
+margin_bottom = 540.0
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 2
+
+[node name="pov_player" type="KinematicBody2D" parent="." groups=["player"]]
+position = Vector2( 488, 200 )
+collision_layer = 2
+script = ExtResource( 6 )
+
+[node name="pivot" type="Node2D" parent="pov_player"]
+unique_name_in_owner = true
+script = ExtResource( 5 )
+
+[node name="flashlight" parent="pov_player/pivot" instance=ExtResource( 9 )]
+weight_curve = SubResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pov_player"]
+shape = SubResource( 6 )
+
+[node name="Camera2D" type="Camera2D" parent="pov_player" groups=["camera", "player_camera"]]
+rotating = true
+current = true
+script = ExtResource( 8 )
+
+[node name="radar" type="Area2D" parent="pov_player"]
+visible = false
+monitoring = false
+monitorable = false
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pov_player/radar"]
+shape = SubResource( 7 )
+
+[node name="Timer" type="Timer" parent="pov_player/radar"]
+process_mode = 0
+wait_time = 90.0
+one_shot = true
+
+[node name="light_layer" type="CanvasLayer" parent="."]
+
+[node name="light_mask" type="ViewportContainer" parent="light_layer"]
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Viewport" type="Viewport" parent="light_layer/light_mask"]
+unique_name_in_owner = true
+size = Vector2( 960, 540 )
+transparent_bg = true
+handle_input_locally = false
+usage = 0
+render_target_update_mode = 3
+
+[node name="light_renderer" type="Node2D" parent="light_layer/light_mask/Viewport"]
+script = ExtResource( 3 )
+flashlight_node_path = NodePath("../../../../pov_player/pivot/flashlight")
+
+[node name="Sprite" type="Sprite" parent="light_layer/light_mask/Viewport/light_renderer"]
+visible = false
+texture = ExtResource( 2 )

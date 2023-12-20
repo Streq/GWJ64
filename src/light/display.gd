@@ -21,13 +21,13 @@ func _ready():
 
 	
 func _on_collision(point, normal, color):
-	point = Blur.blur(points[0],point,1024.0)
+#	point = Blur.blur(points[0],point,1024.0)
 	points[1] = point
 	self.surface_color = color if color.a!=0.0 else self.color
 	self.normal = normal
 	
 func _on_no_collision(point):
-	point = Blur.blur(points[0],point,1024.0)
+#	point = Blur.blur(points[0],point,1024.0)
 	points[1] = point
 	self.surface_color = Color.transparent
 
@@ -35,5 +35,35 @@ func _process(delta):
 	update()
 
 func _draw():
-	Render.draw_ray(self, to_global(points[0]), to_global(points[1]), color, width)
-	Render.draw_surface_collided_with(self, to_global(points[1]), normal, surface_color)
+#	draw_ray(self)
+#	draw_surface(self)
+	pass
+func draw(canvas_item, transform := Transform2D.IDENTITY):
+	draw_ray(canvas_item, transform)
+	draw_surface(canvas_item, transform)
+	
+
+func draw_surface(canvas_item : Node2D, transform := Transform2D.IDENTITY):
+	if !surface_color.a:
+		return
+#	var final_color = surface_color
+	var final_color = surface_color * color
+	final_color.a = surface_color.a
+	
+	Render.draw_surface_collided_with_local(
+		canvas_item, 
+		points[1], 
+		to_local(normal + global_position), 
+		final_color,
+		transform
+	)
+
+func draw_ray(canvas_item : Node2D, transform := Transform2D.IDENTITY):
+	Render.draw_ray_local(
+		canvas_item, 
+		points[0], 
+		points[1], 
+		color, 
+		width, 
+		transform
+	)

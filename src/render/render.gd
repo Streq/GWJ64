@@ -19,3 +19,25 @@ static func draw_ray(item:Node2D, global_start:Vector2, global_end:Vector2, colo
 			color, 
 			width
 		)
+static func draw_ray_local(item:Node2D, local_start:Vector2, local_end:Vector2, color:Color, width:float, transform : Transform2D = Transform2D.IDENTITY):
+	item.draw_line(
+			transform.xform(local_start),
+			transform.xform(local_end), 
+			color, 
+			width
+		)
+static func draw_surface_collided_with_local(
+	canvas_item:Node2D, 
+	local_point:Vector2, 
+	local_normal:Vector2, 
+	color:Color, 
+	transform : Transform2D = Transform2D.IDENTITY
+):
+	if color.a:
+		var tangent = local_normal.tangent()*1.5
+		canvas_item.draw_line(
+				transform.xform(local_point-local_normal-tangent), 
+				transform.xform(local_point-local_normal+tangent),
+				color, 
+				1.0
+			)

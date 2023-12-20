@@ -10,6 +10,7 @@
 radius = 504.254
 
 [node name="KinematicBody2D" type="KinematicBody2D" groups=["ghoul"]]
+collision_layer = 6
 script = ExtResource( 1 )
 color = Color( 1, 0, 0, 1 )
 
