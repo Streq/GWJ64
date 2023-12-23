@@ -207,6 +207,7 @@ GifRecorder="res://src/util/global/gif_recorder/gif_recorder.tscn"
 FPS="res://src/util/global/FPS/FPS.tscn"
 GlobalInputs="res://src/util/global/input/global_inputs.gd"
 Screenshake="*res://src/util/global/screenshake/Screenshake.tscn"
+DebugInfo="*res://src/util/global/debug_info/DebugInfo.tscn"
 
 [display]
 
@@ -322,6 +323,13 @@ shorten_ray={
 2d_physics/layer_1="terrain"
 2d_physics/layer_2="character"
 2d_physics/layer_3="light_opaque"
+
+[network]
+
+limits/debugger_stdout/max_chars_per_second=204800
+limits/debugger_stdout/max_messages_per_frame=100
+limits/debugger_stdout/max_errors_per_second=1000
+limits/debugger_stdout/max_warnings_per_second=1000
 
 [physics]
 

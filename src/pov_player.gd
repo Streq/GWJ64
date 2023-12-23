@@ -9,7 +9,6 @@ func die(by:Node = null):
 	get_tree().change_scene("res://src/screen/death.tscn")
 	
 func _physics_process(delta):
-	print(global_position)
 	var dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	move_and_slide(dir.rotated(global_rotation)*100)
 

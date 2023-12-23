@@ -72,7 +72,6 @@ func re_emit_ray(ray:RayCast2D, local_entry_point:Vector2, local_depth:Vector2):
 		new_ray.hide()
 		ray_map[ray] = new_ray
 		original_ray_map[new_ray] = ray
-		print(ray_map.size())
 		
 	var saved_ray : Ray = ray_map[ray]
 	saved_ray.display.copy_props(ray.display)

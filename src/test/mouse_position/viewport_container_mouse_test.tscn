@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/test/ViewportContainer.gd" type="Script" id=1]
+[ext_resource path="res://assets/texture/icon.png" type="Texture" id=2]
+[ext_resource path="res://src/test/mouse_position/Sprite.gd" type="Script" id=3]
+[ext_resource path="res://src/test/mouse_position/viewport_container_mouse_test.gd" type="Script" id=4]
+
+[node name="viewport_container_test" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+margin_left = 192.0
+margin_top = 91.0
+margin_right = 758.0
+margin_bottom = 426.0
+script = ExtResource( 1 )
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="ViewportContainer/Viewport"]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="ViewportContainer/Viewport/CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.215686, 0.215686, 0.215686, 1 )
+
+[node name="Sprite" type="Sprite" parent="ViewportContainer/Viewport"]
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
