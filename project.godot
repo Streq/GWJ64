@@ -200,6 +200,7 @@ config/icon="res://assets/texture/icon.png"
 
 [autoload]
 
+Global="*res://src/global/global.tscn"
 Group="*res://src/util/global/group/group.gd"
 Pause="*res://src/util/global/pause/Pause.tscn"
 GifRecorder="res://src/util/global/gif_recorder/gif_recorder.tscn"

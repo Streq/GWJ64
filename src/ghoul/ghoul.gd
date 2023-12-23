@@ -29,12 +29,7 @@ func _physics_process(delta):
 		health -= rays
 	rays = 0
 	if health <= 0:
-		NodeUtils.reparent_keep_transform(die_particles,get_parent())
-		die_particles.set_physics_process(true)
-		die_particles.emitting = true
-		Screenshake.shake(Vector2.DOWN.rotated(global_rotation)*8.0, 1.0)
-		
-		queue_free()
+		die()
 	if !triggered:
 		return
 	var player : Node2D = Group.get_one("player")
@@ -52,3 +47,11 @@ func _on_ray_entered(ray: Ray):
 func _on_trigger_area_body_entered(body):
 	if body.is_in_group("player"):
 		triggered = true
+
+func die(reason:Node = null):
+	NodeUtils.reparent_keep_transform(die_particles,get_parent())
+	die_particles.set_physics_process(true)
+	die_particles.emitting = true
+	Screenshake.shake(Vector2.DOWN.rotated(global_rotation)*8.0, 1.0)
+	
+	queue_free()

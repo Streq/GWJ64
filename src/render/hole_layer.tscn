@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="Shader" id=56]
+code = "shader_type canvas_item;
+
+uniform vec2 pov;
+uniform float offset_units = 1.0;
+uniform int passes = 32; 
+
+void fragment(){
+	vec4 tex = texture(SCREEN_TEXTURE, SCREEN_UV);
+	vec2 offset = vec2(0.0);
+	int i = 0;
+	float dark_factor = 0.9;
+	vec2 dist = SCREEN_UV - pov;
+	while (tex.r == 0.0 && tex.a != 0.0){
+		offset = offset + dist;
+		i += 1;
+		if (i > passes){
+			break;
+		}
+		tex = texture(
+			SCREEN_TEXTURE, 
+			SCREEN_UV + offset*SCREEN_PIXEL_SIZE*offset_units
+		);
+		dark_factor *= 0.9;
+		tex.rgb*=dark_factor;
+	}
+	COLOR = tex;
+
+}"
+
+[sub_resource type="ShaderMaterial" id=57]
+shader = SubResource( 56 )
+shader_param/pov = Vector2( 0.5, 0.5 )
+shader_param/offset_units = 16.0
+shader_param/passes = 16
+
+[node name="hole_layer" type="CanvasLayer"]
+
+[node name="screen" type="ColorRect" parent="."]
+material = SubResource( 57 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 0.99809, 1 )
+color = Color( 1, 0, 0, 1 )

@@ -4,9 +4,10 @@ signal radar_grabbed
 
 onready var radar = $radar
 
-func die():
+func die(by:Node = null):
+	Global.death_reason = by.reason
 	get_tree().change_scene("res://src/screen/death.tscn")
-
+	
 func _physics_process(delta):
 	print(global_position)
 	var dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")

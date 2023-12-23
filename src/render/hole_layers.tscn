@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/render/hole_layer.tscn" type="PackedScene" id=1]
+
+[node name="hole_layers" type="CanvasLayer"]
+
+[node name="hole_layer" parent="." instance=ExtResource( 1 )]
