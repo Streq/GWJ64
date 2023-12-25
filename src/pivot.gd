@@ -26,7 +26,7 @@ func get_weight():
 
 
 func calc_global_mouse_position():
-	return get_viewport().get_mouse_position()/get_viewport().size
+	return MouseUtils.get_global_mouse_position_for(self)
 
 const debug_string = """
 global_mouse_position:{}

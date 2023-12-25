@@ -7,3 +7,4 @@ onready var resolution = Vector2(
 	ProjectSettings.get("display/window/size/width"),
 	ProjectSettings.get("display/window/size/height")
 )
+onready var default_window_size = resolution

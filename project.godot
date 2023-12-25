@@ -208,6 +208,7 @@ FPS="res://src/util/global/FPS/FPS.tscn"
 GlobalInputs="res://src/util/global/input/global_inputs.gd"
 Screenshake="*res://src/util/global/screenshake/Screenshake.tscn"
 DebugInfo="*res://src/util/global/debug_info/DebugInfo.tscn"
+MouseUtils="*res://src/util/global/mouse/MouseUtils.tscn"
 
 [display]
 

@@ -1,23 +1,29 @@
 extends Sprite
 
-onready var viewport_container : Control = $"../.."
-
 func _process(delta: float) -> void:
-	var screen_transform = get_viewport_transform() * get_global_transform()
-	
-	var rect_pos = viewport_container.get_global_rect().position
-	DebugInfo.set_label("OS.get_screen_size()",OS.get_screen_size())
-	DebugInfo.set_label("OS.get_real_window_size()",OS.get_real_window_size())
-	DebugInfo.set_label("OS.window_size",OS.window_size)
-	var scale = (OS.window_size/Global.resolution)
-	var min_scale = min(scale.x, scale.y)
-	var max_scale = max(scale.x, scale.y)
-	var identity = Vector2(1,1)
-	
-	DebugInfo.set_label("size", scale)
-	var mouse_position = get_global_mouse_position()
-	global_position = (
-		(mouse_position-rect_pos*(min_scale-1.0))/min_scale
-	)
-	DebugInfo.set_label(name, global_position)
-	
+	global_position = MouseUtils.get_global_mouse_position_for(self)
+#	var display_container_position = DebugInfo.get_value("viewport_container_pos")
+#	var scale = (OS.window_size/Global.resolution)
+#	var min_scale = min(scale.x, scale.y)
+#	var display_scale = Vector2(min_scale,min_scale)
+#	var original_display_size = Global.resolution
+#	var window_size = OS.window_size
+#	var margin = OS.window_size-(Global.resolution*display_scale)
+#	var mouse_position = get_global_mouse_position()
+#
+#	global_position = (
+#		(
+#			+ mouse_position 
+#			- display_container_position*(min_scale - 1.0) 
+#			- margin*0.5
+#		)/min_scale
+#	)
+#
+#
+#	DebugInfo.set_label("OS.get_screen_size()",OS.get_screen_size())
+#	DebugInfo.set_label("OS.get_real_window_size()",OS.get_real_window_size())
+#	DebugInfo.set_label("OS.window_size",OS.window_size)
+#	DebugInfo.set_label("margin",margin)
+#	DebugInfo.set_label("size", scale)
+#	DebugInfo.set_label(name, global_position)
+#
