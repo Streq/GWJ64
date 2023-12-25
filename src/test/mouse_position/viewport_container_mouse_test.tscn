@@ -37,7 +37,6 @@ texture = ExtResource( 2 )
 script = ExtResource( 5 )
 
 [node name="sprite_within" type="Sprite" parent="ViewportContainer/Viewport"]
-visible = false
 modulate = Color( 1, 1, 1, 0.392157 )
 texture = ExtResource( 2 )
 script = ExtResource( 3 )

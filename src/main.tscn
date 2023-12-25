@@ -437,7 +437,6 @@ script = ExtResource( 7 )
 should_hide = false
 
 [node name="light_layer" type="CanvasLayer" parent="Viewport/Node"]
-visible = false
 
 [node name="light_mask" type="ViewportContainer" parent="Viewport/Node/light_layer"]
 material = SubResource( 34 )
@@ -450,7 +449,7 @@ size = Vector2( 1120, 700 )
 transparent_bg = true
 handle_input_locally = false
 usage = 0
-render_target_update_mode = 0
+render_target_update_mode = 3
 
 [node name="light_renderer" type="Node2D" parent="Viewport/Node/light_layer/light_mask/Viewport"]
 script = ExtResource( 20 )
@@ -555,6 +554,7 @@ autowrap = true
 
 [node name="Camera2D" type="Camera2D" parent="Viewport/Node/pov_player" groups=["camera", "player_camera"]]
 rotating = true
+current = true
 script = ExtResource( 9 )
 
 [node name="follow_mouse" type="Node2D" parent="Viewport/Node"]

@@ -2,6 +2,8 @@ extends Sprite
 
 func _process(delta: float) -> void:
 	global_position = MouseUtils.get_global_mouse_position_for(self)
+	
+	
 #	var display_container_position = DebugInfo.get_value("viewport_container_pos")
 #	var scale = (OS.window_size/Global.resolution)
 #	var min_scale = min(scale.x, scale.y)
@@ -25,5 +27,6 @@ func _process(delta: float) -> void:
 #	DebugInfo.set_label("OS.window_size",OS.window_size)
 #	DebugInfo.set_label("margin",margin)
 #	DebugInfo.set_label("size", scale)
-#	DebugInfo.set_label(name, global_position)
+	DebugInfo.set_label(name, global_position)
+	DebugInfo.set_label("viewport", get_viewport().canvas_transform)
 #
