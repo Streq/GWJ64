@@ -33,6 +33,7 @@ script = ExtResource( 4 )
 
 [node name="pivot" type="Node2D" parent="."]
 unique_name_in_owner = true
+process_priority = -1
 script = ExtResource( 2 )
 
 [node name="flashlight" parent="pivot" instance=ExtResource( 6 )]

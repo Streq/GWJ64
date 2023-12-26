@@ -10,8 +10,7 @@ func _physics_process(delta):
 	
 	var global_mouse_position = calc_global_mouse_position()
 	
-	DebugInfo.set_label(
-	"pov_pivot",get_debug_info())
+#	DebugInfo.set_label("pov_pivot",get_debug_info())
 	
 	global_rotation = lerp_angle(global_rotation, (global_mouse_position - global_position).angle(), delta*10.0/weight)
 
