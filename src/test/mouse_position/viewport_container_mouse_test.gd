@@ -26,9 +26,11 @@ const map = {
 	KEY_Q : 2.0
 }
 
+
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		var key_event = event as InputEventKey
-		if key_event.is_pressed() and map.has(key_event.scancode):
-			OS.window_size.x = Global.default_window_size.x * map[key_event.scancode]
-			
+		if key_event.is_pressed():
+			if map.has(key_event.scancode):
+				OS.window_size.x = Global.default_window_size.x * map[key_event.scancode]

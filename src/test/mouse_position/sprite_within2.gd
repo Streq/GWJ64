@@ -1,4 +1,5 @@
 extends Sprite
+onready var viewport_container: ViewportContainer = $"../.."
 
 func _process(delta: float) -> void:
 	global_position = MouseUtils.get_global_mouse_position_for(self)
@@ -26,7 +27,9 @@ func _process(delta: float) -> void:
 #	DebugInfo.set_label("OS.get_real_window_size()",OS.get_real_window_size())
 #	DebugInfo.set_label("OS.window_size",OS.window_size)
 #	DebugInfo.set_label("margin",margin)
-#	DebugInfo.set_label("size", scale)
+	DebugInfo.set_label("get_viewport_transform() * get_global_transform()", get_viewport_transform() * get_global_transform())
+	DebugInfo.set_label("get_viewport_transform() ", get_viewport_transform())
 	DebugInfo.set_label(name, global_position)
-	DebugInfo.set_label("viewport", get_viewport().canvas_transform)
+	DebugInfo.set_label("viewport_canvas_transform", get_viewport().canvas_transform)
+	DebugInfo.set_label("mouse_position_within_container", viewport_container.get_local_mouse_position())
 #
