@@ -214,8 +214,6 @@ MouseUtils="*res://src/util/global/mouse/MouseUtils.tscn"
 
 window/size/width=960
 window/size/height=540
-window/size/test_width=1920
-window/size/test_height=540
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 

@@ -5,30 +5,38 @@ var entrance1 : Entrance
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	setup()
+
+func setup():
 	for child in get_children():
 		if child is Entrance:
-			print("entrance found")
-			if !is_instance_valid(entrance0):
+			if !is_instance_valid(entrance0) and child != entrance1:
 				entrance0 = child
 				continue
-			if !is_instance_valid(entrance1):
+			if !is_instance_valid(entrance1) and child != entrance0:
 				entrance1 = child
 				break
-	entrance0.connect("ray_entered",entrance1,"re_emit_ray")
-	entrance1.connect("ray_entered",entrance0,"re_emit_ray")
-	entrance0.connect("ray_exited",entrance1,"exit_ray")
-	entrance1.connect("ray_exited",entrance0,"exit_ray")
-	entrance0.connect("warp",entrance1,"warp",[entrance0])
-	entrance1.connect("warp",entrance0,"warp",[entrance1])
 
+	if !is_valid():
+		return
+	connect_entrance(entrance0, entrance1)
+	connect_entrance(entrance1, entrance0)
+
+func connect_entrance(entrance0, entrance1):
+	entrance0.connect("ray_entered",entrance1,"re_emit_ray")
+	entrance0.connect("ray_exited",entrance1,"exit_ray")
+	entrance0.connect("warp",entrance1,"warp",[entrance0])
+	
 func _process(delta):
 	update()
 
-
-#const colors = [Color.red, Color.green, Color.blue]
+func is_valid():
+	return is_instance_valid(entrance0) and is_instance_valid(entrance1)
+	
 const colors = [Color.cyan, Color.magenta, Color.yellow]
-#const colors = [Color.cyan, Color.magenta, Color.yellow]
 func _draw():
+	if !is_valid():
+		return
 	for entrances in [[entrance0, entrance1], [entrance1, entrance0]]:
 		var entry = entrances[0]
 		var exit = entrances[1]

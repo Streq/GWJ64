@@ -36,7 +36,7 @@ unique_name_in_owner = true
 process_priority = -1
 script = ExtResource( 2 )
 
-[node name="flashlight" parent="pivot" instance=ExtResource( 6 )]
+[node name="flashlight" parent="pivot" groups=["flashlight"] instance=ExtResource( 6 )]
 width_curve = SubResource( 23 )
 length_curve = SubResource( 22 )
 weight_curve = SubResource( 20 )

@@ -1,14 +1,7 @@
 extends Node2D
-export var flashlight_node_path : NodePath
-onready var flashlight : Node2D = get_node(flashlight_node_path) as Node2D
+
 var light : LightSource
 
-func _ready():
-	if !is_instance_valid(flashlight.light):
-		yield(flashlight,"ready") 
-	light = flashlight.light
-	
-	
 func _process(delta):
 	var screen_transform = light.get_viewport_transform() * light.get_global_transform()
 	transform = screen_transform
@@ -22,3 +15,23 @@ func _draw():
 			continue
 		ray.draw(self, r.transform)
 
+
+func sleep():
+	set_process(false)
+	visible = false
+func wake():
+	set_process(true)
+	visible = true
+
+
+
+func follow(light):
+	self.light = light
+	set_process(true)
+	light.connect("tree_exited",self,"sleep")
+	light.connect("tree_entered",self,"wake")
+func unfollow():
+	if is_instance_valid(light):
+		light.disconnect("tree_exited",self,"sleep")
+		light.disconnect("tree_entered",self,"wake")
+	light = null

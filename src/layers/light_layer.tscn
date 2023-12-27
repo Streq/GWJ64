@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/shader/mask_shader.gdshader" type="Shader" id=2]
+[ext_resource path="res://src/layers/light_layer.gd" type="Script" id=3]
+[ext_resource path="res://src/render/viewport_container.gd" type="Script" id=4]
+
+[sub_resource type="ShaderMaterial" id=34]
+shader = ExtResource( 2 )
+
+[node name="light_layer" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="light_mask" type="ViewportContainer" parent="."]
+material = SubResource( 34 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="Viewport" type="Viewport" parent="light_mask"]
+unique_name_in_owner = true
+transparent_bg = true
+handle_input_locally = false
+usage = 0
+render_target_update_mode = 3

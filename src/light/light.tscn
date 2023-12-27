@@ -10,7 +10,7 @@ _data = [ Vector2( 0, 0 ), 0.0, 0.450101, 0, 0, Vector2( 0.996409, 0.972727 ), 2
 min_value = 0.1
 _data = [ Vector2( 0, 0.1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[node name="light" type="Node2D"]
+[node name="light" type="Node2D" groups=["light"]]
 script = ExtResource( 1 )
 RAY = ExtResource( 2 )
 rays = 64
