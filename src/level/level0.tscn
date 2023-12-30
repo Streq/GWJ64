@@ -7,11 +7,11 @@
 [ext_resource path="res://src/terrain/terrain.gd" type="Script" id=5]
 [ext_resource path="res://assets/texture/gray_square.png" type="Texture" id=6]
 [ext_resource path="res://src/follow_mouse.gd" type="Script" id=7]
-[ext_resource path="res://assets/texture/pokemon/johto_tileset_gba.png" type="Texture" id=8]
+[ext_resource path="res://src/camera/pov_camera.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/portal/entrance.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/texture/pokemon/johto_tileset_gba.png" type="Texture" id=10]
 [ext_resource path="res://src/portal/portal.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/light/demon.tscn" type="PackedScene" id=13]
-[ext_resource path="res://src/Camera2D.gd" type="Script" id=14]
 [ext_resource path="res://src/win_area.gd" type="Script" id=15]
 [ext_resource path="res://src/radar/radar_timer_bar.gd" type="Script" id=16]
 [ext_resource path="res://src/debug/debug_info.gd" type="Script" id=17]
@@ -357,7 +357,7 @@ points = PoolVector2Array( 10, 10, 0, 10, 0, 0, 10, 0 )
 
 [sub_resource type="TileSet" id=51]
 0/name = "johto_tileset_gba.png 0"
-0/texture = ExtResource( 8 )
+0/texture = ExtResource( 10 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 32, 32, 32, 32 )
@@ -371,7 +371,7 @@ points = PoolVector2Array( 10, 10, 0, 10, 0, 0, 10, 0 )
 0/shapes = [  ]
 0/z_index = 0
 1/name = "johto_tileset_gba.png 1"
-1/texture = ExtResource( 8 )
+1/texture = ExtResource( 10 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 64, 96, 32, 32 )
@@ -385,7 +385,7 @@ points = PoolVector2Array( 10, 10, 0, 10, 0, 0, 10, 0 )
 1/shapes = [  ]
 1/z_index = 0
 2/name = "johto_tileset_gba.png 2"
-2/texture = ExtResource( 8 )
+2/texture = ExtResource( 10 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 160, 64, 96, 96 )
@@ -408,7 +408,7 @@ points = PoolVector2Array( 10, 10, 0, 10, 0, 0, 10, 0 )
 2/shapes = [  ]
 2/z_index = 0
 3/name = "johto_tileset_gba.png 3"
-3/texture = ExtResource( 8 )
+3/texture = ExtResource( 10 )
 3/tex_offset = Vector2( 0, 0 )
 3/modulate = Color( 1, 1, 1, 1 )
 3/region = Rect2( 64, 192, 32, 32 )
@@ -603,10 +603,8 @@ autowrap = true
 
 [node name="pov_player" parent="." instance=ExtResource( 2 )]
 
-[node name="Camera2D" type="Camera2D" parent="pov_player" groups=["camera", "player_camera"]]
-rotating = true
-current = true
-script = ExtResource( 14 )
+[node name="pov_camera" parent="pov_player" instance=ExtResource( 8 )]
+process_mode = 0
 
 [node name="follow_mouse" type="Node2D" parent="."]
 script = ExtResource( 7 )

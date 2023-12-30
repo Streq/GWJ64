@@ -1,13 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/texture/icon.png" type="Texture" id=1]
 [ext_resource path="res://src/pivot.gd" type="Script" id=2]
-[ext_resource path="res://src/layers/light_layer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/pov_player.gd" type="Script" id=4]
 [ext_resource path="res://src/player/radar.gd" type="Script" id=5]
 [ext_resource path="res://src/light/flashlight.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/render/hole_layer.tscn" type="PackedScene" id=7]
-[ext_resource path="res://src/layers/light_renderer.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Curve" id=23]
 min_value = 5.0
@@ -64,9 +61,3 @@ shape = SubResource( 24 )
 process_mode = 0
 wait_time = 90.0
 one_shot = true
-
-[node name="hole_depth_layer" parent="." instance=ExtResource( 7 )]
-layer = -1
-
-[node name="light_layer" parent="." instance=ExtResource( 3 )]
-LIGHT_RENDERER = ExtResource( 8 )
