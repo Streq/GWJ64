@@ -3,7 +3,7 @@ class_name Ray
 
 signal collision(point, normal, color)
 signal no_collision(point)
-signal casted()
+signal casted(from_global, to_global)
 
 onready var display = $"%display"
 var active = true
@@ -11,7 +11,6 @@ var collision_point = Vector2()
 
 #copy of this ray recasted through a surface like a portal o a mirror
 var recast : Ray = null
-
 
 func check_colliding():
 	return active and is_colliding()
