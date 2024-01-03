@@ -14,7 +14,7 @@ func _draw():
 		if !is_instance_valid(ray):
 			continue
 		ray.draw(self, r.transform)
-
+		
 
 func sleep():
 	set_process(false)
